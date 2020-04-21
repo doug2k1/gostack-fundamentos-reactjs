@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable import/first */
 
-jest.mock('../utils/formatValue.ts', () => ({
+jest.mock('../utils/formatCurrency.ts', () => ({
   __esModule: true,
-  default: jest.fn().mockImplementation((value: number) => {
+  formatCurrency: jest.fn().mockImplementation((value: number) => {
     switch (value) {
       case 6000:
         return 'R$ 6.000,00';
@@ -30,7 +30,7 @@ import App from '../App';
 const apiMock = new MockAdapter(api);
 
 const wait = (amount = 0): Promise<void> => {
-  return new Promise((resolve) => setTimeout(resolve, amount));
+  return new Promise(resolve => setTimeout(resolve, amount));
 };
 
 const actWait = async (amount = 0): Promise<void> => {
