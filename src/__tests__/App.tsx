@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable import/first */
 
-jest.mock('../utils/formatCurrency.ts', () => ({
+jest.mock('../utils/formatValue.ts', () => ({
   __esModule: true,
-  formatCurrency: jest.fn().mockImplementation((value: number) => {
+  default: jest.fn().mockImplementation((value: number) => {
     switch (value) {
       case 6000:
         return 'R$ 6.000,00';

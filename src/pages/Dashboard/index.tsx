@@ -9,7 +9,7 @@ import api from '../../services/api';
 import Header from '../../components/Header';
 
 import { Container, CardContainer, Card, TableContainer } from './styles';
-import { formatCurrency } from '../../utils/formatCurrency';
+import formatValue from '../../utils/formatValue';
 import { formatDate } from '../../utils/formatDate';
 
 interface Transaction {
@@ -58,9 +58,7 @@ const Dashboard: React.FC = () => {
               <p>Entradas</p>
               <img src={income} alt="Income" />
             </header>
-            <h1 data-testid="balance-income">
-              {formatCurrency(balance.income)}
-            </h1>
+            <h1 data-testid="balance-income">{formatValue(balance.income)}</h1>
           </Card>
           <Card>
             <header>
@@ -68,7 +66,7 @@ const Dashboard: React.FC = () => {
               <img src={outcome} alt="Outcome" />
             </header>
             <h1 data-testid="balance-outcome">
-              {formatCurrency(balance.outcome)}
+              {formatValue(balance.outcome)}
             </h1>
           </Card>
           <Card total>
@@ -76,7 +74,7 @@ const Dashboard: React.FC = () => {
               <p>Total</p>
               <img src={total} alt="Total" />
             </header>
-            <h1 data-testid="balance-total">{formatCurrency(balance.total)}</h1>
+            <h1 data-testid="balance-total">{formatValue(balance.total)}</h1>
           </Card>
         </CardContainer>
 
@@ -97,7 +95,7 @@ const Dashboard: React.FC = () => {
                   <td className="title">{transaction.title}</td>
                   <td className={transaction.type}>
                     {transaction.type === 'outcome' && '- '}
-                    {formatCurrency(transaction.value)}
+                    {formatValue(transaction.value)}
                   </td>
                   <td>{transaction.category.title}</td>
                   <td>{formatDate(transaction.created_at)}</td>
